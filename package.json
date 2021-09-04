@@ -1,0 +1,35 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "mern ecommerce developed by akib and nazir inspired by rizwan khan",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akibulshohag/ecommerce-mern-api.git"
+  },
+  "keywords": [
+    "react",
+    "node"
+  ],
+  "author": "akib&nazir",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akibulshohag/ecommerce-mern-api/issues"
+  },
+  "homepage": "https://github.com/akibulshohag/ecommerce-mern-api#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.12.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
