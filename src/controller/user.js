@@ -42,7 +42,8 @@ exports.userLogin = async (req, res, next) => {
             let isvalidPassword = user.authinticate(password)
             if (isvalidPassword) {
                 let token = jwt.sign({
-                    id: user._id
+                    id: user._id,
+                    role: role
                 },
                     process.env.SECRET_KEY,
                     {
@@ -120,13 +121,17 @@ exports.adminSignup = async (req, res, next) => {
 exports.adminLogin = async (req, res, next) => {
     try {
         let { email, password } = req.body
+        console.log('=====req',req.body);
         let user = await User.findOne({ email })
+        console.log('=====user',user);
+        
         if (user) {
             const { _id, firstName, lastName, email, role, fullName } = user;
             let isvalidPassword = user.authinticate(password)
             if (isvalidPassword) {
                 let token = jwt.sign({
-                    id: user._id
+                    id: user._id,
+                    role: role
                 },
                     process.env.SECRET_KEY,
                     {

@@ -2,6 +2,7 @@ const express = require('express')
 const dotenv = require('dotenv')
 const mongoose = require('mongoose')
 const userRoute = require('./routes/userRoutes')
+const categoryRoute = require('./routes/categoryRoutes')
 
 const app = express()
 
@@ -11,15 +12,16 @@ dotenv.config();
 app.use(express.json())
 
 app.use('/gh', userRoute)
+app.use('/gh', categoryRoute)
 
 
 
 
 //MongoDB connection
 mongoose.connect('mongodb://localhost/eheartz', {
-    useNewUrlParser: true
-    // useUnifiedTopology: true,
-    // useCreateIndex: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true
 }, () => {
     app.listen(2000, () => {
         console.log('server is running on port 4000')
