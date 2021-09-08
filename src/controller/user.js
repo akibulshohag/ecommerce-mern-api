@@ -42,7 +42,8 @@ exports.userLogin = async (req, res, next) => {
             let isvalidPassword = user.authinticate(password)
             if (isvalidPassword) {
                 let token = jwt.sign({
-                    id: user._id
+                    id: user._id,
+                    role
                 },
                     process.env.SECRET_KEY,
                     {
@@ -126,7 +127,8 @@ exports.adminLogin = async (req, res, next) => {
             let isvalidPassword = user.authinticate(password)
             if (isvalidPassword) {
                 let token = jwt.sign({
-                    id: user._id
+                    id: user._id,
+                    role
                 },
                     process.env.SECRET_KEY,
                     {
