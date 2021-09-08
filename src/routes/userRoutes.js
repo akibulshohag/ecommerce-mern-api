@@ -1,22 +1,21 @@
 const router = require('express').Router()
 const {
-    userSignup,
-    getAllUser,
+    userSignup, 
+    getAllUser, 
     userLogin,
     adminLogin,
     adminSignup
 } = require('../controller/user')
 
-const { signupValidate, isRequestValidated } = require('../validator/signupValidator')
-const { signinValidate, isLoginRequestValidated } = require('../validator/signinValidator')
+const {isAuth} = require('../middleware/authintication')
 
-const { isAuth } = require('../middleware/authintication')
+const{signupValidate,authValidationResult,signinValidate} = require('../validators/signupValidation')
 
-router.post('/signup', signupValidate, isRequestValidated, userSignup)
-router.post('/login', userLogin)
+router.post('/signup',signupValidate,authValidationResult, userSignup)
+router.post('/login',signinValidate,authValidationResult, userLogin)
 router.get('/allUser', isAuth, getAllUser)
 
-router.post('/adminSignup', adminSignup)
-router.post('/adminLogin', adminLogin)
+router.post('/adminSignup',signupValidate,authValidationResult, adminSignup)
+router.post('/adminLogin',signinValidate,authValidationResult, adminLogin)
 
 module.exports = router
