@@ -5,6 +5,7 @@ const userRoute = require('./routes/userRoutes')
 const categoryRoutes = require('./routes/category')
 const productRoutes = require('./routes/product')
 
+
 const app = express()
 
 //environment variable or you can say constants
