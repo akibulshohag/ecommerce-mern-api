@@ -1,14 +1,14 @@
 const express = require('express')
 const router = express.Router();
-const { addCategory, getCategories } = require('../controller/category')
+const { addProduct, getAllProduct } = require('../controller/product')
 const { isAuth, adminMiddleware } = require('../middleware/authintication')
 
-router.post('/category/createCategory',
+router.post('/product/createProduct',
     isAuth,
     adminMiddleware,
 
-    addCategory)
-router.get('/category/getAllCategory',isAuth, getCategories)
+    addProduct)
+router.get('/product/getAllProduct',isAuth, adminMiddleware, getAllProduct)
 
 
 

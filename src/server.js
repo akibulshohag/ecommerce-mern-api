@@ -3,6 +3,7 @@ const dotenv = require('dotenv')
 const mongoose = require('mongoose')
 const userRoute = require('./routes/userRoutes')
 const categoryRoutes = require('./routes/category')
+const productRoutes = require('./routes/product')
 
 const app = express()
 
@@ -13,6 +14,7 @@ app.use(express.json())
 
 app.use('/gh', userRoute)
 app.use('/gh', categoryRoutes)
+app.use('/gh', productRoutes)
 
 
 
