@@ -3,10 +3,9 @@ const Cart = require("../model/Cart");
 exports.addToCart = async (req, res) => {
     try {
         const { cartItems } = req.body
-        console.log('cartItem======', cartItems)
         const prevCarts = await Cart.findOne({ user: req.user.id })
         if (prevCarts) {
-            console.log('isduplicate======', prevCarts);
+           
 
             const isDuplicateProduct = prevCarts.cartItems.find(item => item.product == cartItems.product)
 
@@ -16,7 +15,7 @@ exports.addToCart = async (req, res) => {
                     { "user": req.user.id ,"cartItems.product":cartItems.product },
                     {
                         $set: {
-                            cartItems: {
+                            "cartItems.$": {
                                 ...cartItems,
                                 quantity: isDuplicateProduct.quantity + cartItems.quantity
                             },
