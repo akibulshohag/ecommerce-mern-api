@@ -1,21 +1,21 @@
 const Category = require("../model/category");
 const slugify = require("slugify");
 
-const customizeCategoryList = (categories, parentId = null) =>{
+const customizeCategoryList = (categories, parentId = null) => {
     const customCategoryList = []
     let categoryList;
-    if(parentId == null){
+    if (parentId == null) {
         categoryList = categories?.filter(element => element?.parentId == undefined)
-    }else{
+    } else {
         categoryList = categories?.filter(element => element?.parentId == parentId)
     }
 
-    for(let cat of categoryList){
+    for (let cat of categoryList) {
         customCategoryList.push({
             _id: cat?._id,
             name: cat?.name,
             slug: cat?.slug,
-            children: customizeCategoryList(categories,cat?._id)
+            children: customizeCategoryList(categories, cat?._id)
         })
     }
 
@@ -27,14 +27,17 @@ exports.addCategory = (req, res) => {
     const categoryObj = {
         name: req.body.name,
         slug: slugify(req.body.name),
-        
+
     };
+
+    if (req.file) {
+        categoryObj.categoryImage = process.env.API + '/public/' + req.file.filename;
+    }
 
 
     if (req.body.parentId) {
         categoryObj.parentId = req.body.parentId;
     }
-
     const cat = new Category(categoryObj);
     cat.save((error, category) => {
         if (error) return res.status(400).json({ error });

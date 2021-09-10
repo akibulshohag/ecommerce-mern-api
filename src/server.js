@@ -5,6 +5,7 @@ const userRoute = require('./routes/userRoutes')
 const categoryRoutes = require('./routes/category')
 const productRoutes = require('./routes/product')
 const AddToCart = require('./routes/cart')
+const path = require('path')
 
 
 const app = express()
@@ -13,6 +14,7 @@ const app = express()
 dotenv.config();
 
 app.use(express.json())
+app.use("/public", express.static(path.join(__dirname, "uploads")));
 
 app.use('/gh', userRoute)
 app.use('/gh', categoryRoutes)
