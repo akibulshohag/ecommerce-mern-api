@@ -105,7 +105,7 @@ exports.adminSignup = async (req, res, next) => {
                 password,
                 role: "admin"
             })
-            console.log('err',user)
+            console.log('err', user)
             let result = await user.save()
             res.status(200).json({
                 data: result,
@@ -123,7 +123,8 @@ exports.adminLogin = async (req, res, next) => {
         let { email, password } = req.body
         let user = await User.findOne({ email })
         if (user) {
-            const { _id, firstName, lastName, email, role, fullName } = user;
+            const { _id, firstName, lastName, email, role, fullName,token } = user;
+            res.cookie('token', token, { expiresIn: '12h' });
             let isvalidPassword = user.authinticate(password)
             if (isvalidPassword) {
                 let token = jwt.sign({
@@ -157,4 +158,11 @@ exports.adminLogin = async (req, res, next) => {
     } catch (err) {
         console.log('error===', err)
     }
+}
+
+exports.adminLogout = (req, res) => {
+    res.clearCookie('token');
+    res.status(200).json({
+        message:'Admin logout successfully....'
+    })
 }

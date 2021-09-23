@@ -4,7 +4,8 @@ const {
     getAllUser, 
     userLogin,
     adminLogin,
-    adminSignup
+    adminSignup,
+    adminLogout
 } = require('../controller/user')
 
 const {isAuth} = require('../middleware/authintication')
@@ -17,5 +18,6 @@ router.get('/allUser', isAuth, getAllUser)
 
 router.post('/adminSignup',signupValidate,authValidationResult, adminSignup)
 router.post('/adminLogin',signinValidate,authValidationResult, adminLogin)
+router.post('/adminLogout',isAuth,adminLogout )
 
 module.exports = router

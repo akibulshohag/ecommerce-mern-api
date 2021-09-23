@@ -6,6 +6,7 @@ const categoryRoutes = require('./routes/category')
 const productRoutes = require('./routes/product')
 const AddToCart = require('./routes/cart')
 const path = require('path')
+const cors = require('cors')
 
 
 const app = express()
@@ -13,7 +14,8 @@ const app = express()
 //environment variable or you can say constants
 dotenv.config();
 
-app.use(express.json())
+app.use(cors());
+app.use(express.json());
 app.use("/public", express.static(path.join(__dirname, "uploads")));
 
 app.use('/gh', userRoute)
