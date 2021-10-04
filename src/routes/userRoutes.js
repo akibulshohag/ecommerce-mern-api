@@ -18,6 +18,6 @@ router.get('/allUser', isAuth, getAllUser)
 
 router.post('/adminSignup',signupValidate,authValidationResult, adminSignup)
 router.post('/adminLogin',signinValidate,authValidationResult, adminLogin)
-router.post('/adminLogout',isAuth,adminLogout )
+router.post('/adminLogout',adminLogout )
 
 module.exports = router

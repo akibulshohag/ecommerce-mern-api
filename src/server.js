@@ -5,6 +5,7 @@ const userRoute = require('./routes/userRoutes')
 const categoryRoutes = require('./routes/category')
 const productRoutes = require('./routes/product')
 const AddToCart = require('./routes/cart')
+const initialDataRoutes = require('./routes/initialData')
 const path = require('path')
 const cors = require('cors')
 
@@ -22,6 +23,7 @@ app.use('/gh', userRoute)
 app.use('/gh', categoryRoutes)
 app.use('/gh', productRoutes)
 app.use('/gh', AddToCart)
+app.use('/gh', initialDataRoutes)
 
 
 
