@@ -28,15 +28,31 @@ app.use('/gh', initialDataRoutes)
 
 
 
-//MongoDB connection Lliv0n83b6zWUbGp
+//MongoDB connection Lliv0n83b6zWUbGp mongodb://localhost/eheartz
+// mongodb+srv://akibul:Lliv0n83b6zWUbGp@cluster0.ggon1.mongodb.net/eheartzdb?retryWrites=true&w=majority
+// mongoose.connect(`mongodb+srv://akibl:Lliv0n83b6zWUbGp@cluster0.ggon1.mongodb.net/eheartzdb?retryWrites=true&w=majority`, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     useCreateIndex: true,
+// }, () => {
+//     app.listen(3000, () => {
+//         console.log('server is running on port 3000')
+//         console.log('Database connected!')
+//     })
+// });
 
-mongoose.connect(`mongodb+srv://akibul:Lliv0n83b6zWUbGp@cluster0.ggon1.mongodb.net/eheartzdb?retryWrites=true&w=majority`, {
-    useNewUrlParser: true
-    // useUnifiedTopology: true,
-    // useCreateIndex: true
-}, () => {
-    app.listen(3000, () => {
-        console.log('server is running on port 3000')
-        console.log('Database connected!')
+// cluster me cluster0-spwcl.mongodb.net
+// clusteer own cluster0.ggon1.mongodb.net
+
+
+
+mongoose.connect(
+    `mongodb+srv://akib:admin@cluster0.emosi.mongodb.net/eheartz?retryWrites=true&w=majority`
+    )
+    .then(()=>{
+        app.listen(3000)
+        console.log('connected....');
     })
-});
+    .catch((err)=>{
+        console.log(err)
+})

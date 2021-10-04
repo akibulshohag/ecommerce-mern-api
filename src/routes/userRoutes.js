@@ -14,7 +14,7 @@ const{signupValidate,authValidationResult,signinValidate} = require('../validato
 
 router.post('/signup',signupValidate,authValidationResult, userSignup)
 router.post('/login',signinValidate,authValidationResult, userLogin)
-router.get('/allUser', isAuth, getAllUser)
+router.get('/allUser', getAllUser)
 
 router.post('/adminSignup',signupValidate,authValidationResult, adminSignup)
 router.post('/adminLogin',signinValidate,authValidationResult, adminLogin)

@@ -8,6 +8,7 @@ const jwt = require('jsonwebtoken')
 exports.userSignup = async (req, res, next) => {
     try {
         let { firstName, lastName, email, password } = req.body
+        // console.log('======',req.body)
         let user = await User.findOne({ email })
         if (user) {
             res.status(400).json({

@@ -3,7 +3,7 @@ const slugify = require("slugify");
 
 const customizeCategoryList = (categories, parentId = null) => {
     const customCategoryList = []
-    let categoryList;
+    let categoryList; 
     if (parentId == null) {
         categoryList = categories?.filter(element => element?.parentId == undefined)
     } else {
