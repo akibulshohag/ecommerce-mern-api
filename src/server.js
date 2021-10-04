@@ -28,14 +28,15 @@ app.use('/gh', initialDataRoutes)
 
 
 
-//MongoDB connection
-mongoose.connect('mongodb://localhost/eheartz', {
+//MongoDB connection Lliv0n83b6zWUbGp
+
+mongoose.connect(`mongodb+srv://akibul:Lliv0n83b6zWUbGp@cluster0.ggon1.mongodb.net/eheartzdb?retryWrites=true&w=majority`, {
     useNewUrlParser: true
     // useUnifiedTopology: true,
     // useCreateIndex: true
 }, () => {
     app.listen(3000, () => {
-        console.log('server is running on port 4000')
+        console.log('server is running on port 3000')
         console.log('Database connected!')
     })
 });
