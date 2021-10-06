@@ -19,6 +19,10 @@ app.use(cors());
 app.use(express.json());
 app.use("/public", express.static(path.join(__dirname, "uploads")));
 
+app.use('/',(req,res)=>{
+    res.json({"Running":"Run"})
+})
+
 app.use('/gh', userRoute)
 app.use('/gh', categoryRoutes)
 app.use('/gh', productRoutes)
