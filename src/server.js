@@ -50,7 +50,7 @@ mongoose.connect(
     `mongodb+srv://akib:admin@cluster0.emosi.mongodb.net/eheartz?retryWrites=true&w=majority`
     )
     .then(()=>{
-        app.listen(3000)
+        app.listen(process.env.PORT)
         console.log('connected....');
     })
     .catch((err)=>{
