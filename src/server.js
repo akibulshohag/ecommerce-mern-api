@@ -51,7 +51,7 @@ app.use('/gh', initialDataRoutes)
 
 
 mongoose.connect(
-    `mongodb+srv://akib:admin@cluster0.emosi.mongodb.net/eheartz?retryWrites=true&w=majority`
+    `mongodb+srv://akib:admin@cluster0.emosi.cd.net/eheartz?retryWrites=true&w=majority`
     )
     .then(()=>{
         app.listen(process.env.PORT||3000)
