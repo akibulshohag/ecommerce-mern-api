@@ -19,9 +19,9 @@ app.use(cors());
 app.use(express.json());
 app.use("/public", express.static(path.join(__dirname, "uploads")));
 
-app.use('/',(req,res)=>{
-    res.json({"Running":"Run"})
-})
+// app.use('/',(req,res)=>{
+//     res.json({"Running":"Run"})
+// })
 
 app.use('/gh', userRoute)
 app.use('/gh', categoryRoutes)
@@ -32,12 +32,10 @@ app.use('/gh', initialDataRoutes)
 
 
 
-//MongoDB connection Lliv0n83b6zWUbGp mongodb://localhost/eheartz
-// mongodb+srv://akibul:Lliv0n83b6zWUbGp@cluster0.ggon1.mongodb.net/eheartzdb?retryWrites=true&w=majority
-// mongoose.connect(`mongodb+srv://akibl:Lliv0n83b6zWUbGp@cluster0.ggon1.mongodb.net/eheartzdb?retryWrites=true&w=majority`, {
+// mongoose.connect('mongodb://localhost/eheartz', {
 //     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//     useCreateIndex: true,
+//      useUnifiedTopology: true,
+//      useCreateIndex: true
 // }, () => {
 //     app.listen(3000, () => {
 //         console.log('server is running on port 3000')
@@ -47,15 +45,16 @@ app.use('/gh', initialDataRoutes)
 
 // cluster me cluster0-spwcl.mongodb.net
 // clusteer own cluster0.ggon1.mongodb.net
-
+// mongodb://localhost/eheartz
+// mongodb+srv://akib:admin@cluster0.emosi.cd.net/eheartz?retryWrites=true&w=majority
 
 
 mongoose.connect(
-    `mongodb+srv://akib:admin@cluster0.emosi.cd.net/eheartz?retryWrites=true&w=majority`
+    `mongodb://localhost/eheartz`
     )
     .then(()=>{
         app.listen(process.env.PORT||3000)
-        console.log('connected....');
+        console.log('database connected....');
     })
     .catch((err)=>{
         console.log(err)
