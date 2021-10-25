@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router();
-const { addProduct, getAllProduct } = require('../controller/product')
+const { addProduct, getAllProduct,getProductsBySlug } = require('../controller/product')
 const { isAuth, adminMiddleware } = require('../middleware/authintication')
 const path = require('path')
 const multer = require('multer');
@@ -23,6 +23,8 @@ router.post('/product/createProduct',
     upload.array('images'),
 
     addProduct)
+
+router.get('/products/:slug',getProductsBySlug)    
 router.get('/product/getAllProduct', isAuth, adminMiddleware, getAllProduct)
 
 

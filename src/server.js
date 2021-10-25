@@ -55,6 +55,7 @@ mongoose.connect(
     .then(()=>{
         app.listen(process.env.PORT||3000)
         console.log('database connected....');
+        console.log('Server is running on port 3000');
     })
     .catch((err)=>{
         console.log(err)

@@ -1,6 +1,8 @@
 const User = require('../model/User')
 
 const jwt = require('jsonwebtoken')
+// const bcrypt = require('bcrypt')
+const shortid = require('shortid')
 
 
 
@@ -18,7 +20,7 @@ exports.userSignup = async (req, res, next) => {
             let user = new User({
                 firstName,
                 lastName,
-                userName: Math.random().toString(),
+                userName: shortid.generate(),
                 email,
                 password
             })
@@ -48,7 +50,7 @@ exports.userLogin = async (req, res, next) => {
                 },
                     process.env.SECRET_KEY,
                     {
-                        expiresIn: '12h'
+                        expiresIn: '1200h'
                     })
                 res.status(200).json({
                     access_token: token,
@@ -101,7 +103,7 @@ exports.adminSignup = async (req, res, next) => {
             let user = new User({
                 firstName,
                 lastName,
-                userName: Math.random().toString(),
+                userName: shortid.generate(),
                 email,
                 password,
                 role: "admin"
@@ -125,7 +127,7 @@ exports.adminLogin = async (req, res, next) => {
         let user = await User.findOne({ email })
         if (user) {
             const { _id, firstName, lastName, email, role, fullName,token } = user;
-            res.cookie('token', token, { expiresIn: '12h' });
+            res.cookie('token', token, { expiresIn: '1200h' });
             let isvalidPassword = user.authinticate(password)
             if (isvalidPassword) {
                 let token = jwt.sign({
@@ -134,7 +136,7 @@ exports.adminLogin = async (req, res, next) => {
                 },
                     process.env.SECRET_KEY,
                     {
-                        expiresIn: '12h'
+                        expiresIn: '1200h'
                     })
                 res.status(200).json({
                     access_token: token,

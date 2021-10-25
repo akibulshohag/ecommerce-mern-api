@@ -24,7 +24,7 @@ router.post('/category/createCategory',
     upload.single('categoryImage'),
 
     addCategory)
-router.get('/category/getAllCategory',isAuth, getCategories)
+router.get('/category/getAllCategory', getCategories)
 
 
 

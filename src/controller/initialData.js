@@ -3,7 +3,7 @@ const Product = require("../model/product");
 
 function customizeCategoryList(categories, parentId = null) {
     const customCategoryList = []
-    let categoryList; 
+    let categoryList;
     if (parentId == null) {
         categoryList = categories?.filter(element => element?.parentId == undefined)
     } else {
@@ -28,7 +28,7 @@ exports.initialData = async (req, res) => {
     const categories = await Category.find()
     const products = await Product.find()
         .select('_id title regularPrice quantity slug description images category')
-        
+        .populate({ path: 'category', select: '_id name' })
     res.status(200).json({
         categories: customizeCategoryList(categories),
         products
